@@ -61,6 +61,29 @@ services:
        WORDPRESS_DB_PASSWORD: wordpress
 ```
 
+如果不使用docker-compose:
+
+```
+sudo docker run --name db \
+			 -d \
+			 --restart always \
+			 -e MYSQL_ROOT_PASSWORD=somewordpress \
+			 -e MYSQL_DATABASE=wordpress \
+			 -e MYSQL_USER=wordpress \
+			 -e MYSQL_PASSWORD=wordpress \
+			 mysql:5.7
+
+sudo docker run --name wordpress \
+			 --restart always \
+			 --link db \
+			 -e WORDPRESS_DB_HOST=db:3306 \
+			 -e WORDPRESS_DB_USER=wordpress \
+			 -e WORDPRESS_DB_PASSWORD=wordpress \
+			 -p 8000:80 \
+			 wordpress:latest
+
+```
+
 #### Install Compose on Linux systems
 
 - Run this command to download the latest version of Docker Compose:
