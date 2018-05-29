@@ -28,6 +28,29 @@ Docker重现一个容器，Compose重现容器的配置和集群。
 在Compose的世界里，编排和部署的组合结果，就是一朵“容器云”。
 
 
+#### Install Compose on Linux systems
+
+- Run this command to download the latest version of Docker Compose:
+
+```
+$ sudo curl \
+		-L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) \
+		-o /usr/local/bin/docker-compose
+```
+
+- Apply executable permissions to the binary:
+
+```
+$ sudo chmod +x /usr/local/bin/docker-compose
+```
+
+- Test the installation
+
+```
+$ docker-compose --version
+```
+
+
 #### 如何使用docker-compose?
 
 - Define your app’s environment with a Dockerfile so it can be reproduced anywhere.
@@ -82,26 +105,4 @@ sudo docker run --name wordpress \
 			 -p 8000:80 \
 			 wordpress:latest
 
-```
-
-#### Install Compose on Linux systems
-
-- Run this command to download the latest version of Docker Compose:
-
-```
-$ sudo curl \
-		-L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) \
-		-o /usr/local/bin/docker-compose
-```
-
-- Apply executable permissions to the binary:
-
-```
-$ sudo chmod +x /usr/local/bin/docker-compose
-```
-
-- Test the installation
-
-```
-$ docker-compose --version
 ```
