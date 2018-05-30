@@ -1,15 +1,17 @@
 # docker-compose-workshop
 
+### docker-compose 是什么？
 
-#### docker-compose 是什么？
+> docker-compose 是用来定义和运行多个Docker容器应用的工具。使用docker-compose, 你只需要使用一个YAML文件去配置你应用的服务. 然后，运行一个命令，你就可以根据你的配置去创建并启动所有的service
 
-> docker-compose 是用来定义和运行多个Docker容器应用的工具. 使用docker-compose, 你只需要使用一个YAML文件去配置你应用的服务. 然后，运行一个命令，你就可以根据你的配置去创建并启动所有的service。
 
-#### 为什么要使用 docker-compose?
+![haproxy_django_redis_structure](https://user-images.githubusercontent.com/7569085/40710864-61bbe42e-642c-11e8-985a-bdacfafc3679.png)
 
-Docker重现一个容器，Compose重现容器的配置和集群。
+### 为什么要使用 docker-compose?
 
-#### 编排和部署
+Dockerfile**重现一个容器**，Compose**重现容器的配置**和**集群**。
+
+### 编排和部署
 
 - 编排
 
@@ -21,14 +23,14 @@ Docker重现一个容器，Compose重现容器的配置和集群。
 
 所以：
 
-编排是一个指挥家，他的大脑里存储了整个乐曲此起彼伏的演奏流程。
+**编排是一个指挥家，他的大脑里存储了整个乐曲此起彼伏的演奏流程。**
 
-部署就是整个乐队，他们严格按照指挥的意图用乐器来完成乐谱的执行。
+**部署就是整个乐队，他们严格按照指挥的意图用乐器来完成乐谱的执行。**
 
 在Compose的世界里，编排和部署的组合结果，就是一朵“容器云”。
 
 
-#### Install Compose on Linux systems
+### 如何在Linux系统里安装docker-compose?
 
 - Run this command to download the latest version of Docker Compose:
 
@@ -51,12 +53,15 @@ $ docker-compose --version
 ```
 
 
-#### 如何使用docker-compose?
+### 如何使用docker-compose?
 
-- Define your app’s environment with a Dockerfile so it can be reproduced anywhere.
-- Define the services that make up your app in docker-compose.yml so they can be run together in an isolated environment.
-- Run docker-compose up and Compose starts and runs your entire app.
+- 编写你的应用的Dockerfile。
+- 在docker-compose.yml中定义你的应用所依赖的所有服务，这样它们可以在一个隔离的环境中运行.
+- 运行`docker-compose up`来启动和运行你的整个应用.
 
+### Wordpress应用实例
+
+- 使用docker-compose
 
 ```
 version: '3.3'
@@ -84,7 +89,7 @@ services:
        WORDPRESS_DB_PASSWORD: wordpress
 ```
 
-如果不使用docker-compose:
+- 使用docker cli启动
 
 ```
 sudo docker run --name db \
