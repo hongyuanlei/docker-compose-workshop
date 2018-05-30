@@ -1,17 +1,16 @@
-# docker-compose-workshop
+## Docker Compose
 
-### docker-compose 是什么？
+### Docker Compose 是什么？
 
-> docker-compose 是用来定义和运行多个Docker容器应用的工具。使用docker-compose, 你只需要使用一个YAML文件去配置你应用的服务. 然后，运行一个命令，你就可以根据你的配置去创建并启动所有的service
+> docker-compose 是用来定义和运行多个Docker容器应用的工具。
 
+### 为什么要使用 Docker Compose?
 
-![haproxy_django_redis_structure](https://user-images.githubusercontent.com/7569085/40710864-61bbe42e-642c-11e8-985a-bdacfafc3679.png)
+Dockerfile**重现一个容器**，Compose**重现容器的配置**和**集群**。使用docker-compose, 你只需要使用一个YAML文件去配置你应用的服务. 然后，运行一个命令，你就可以根据你的配置去创建并启动所有的service。
 
-### 为什么要使用 docker-compose?
+![docker-compose up 启动所有服务](https://user-images.githubusercontent.com/7569085/40710864-61bbe42e-642c-11e8-985a-bdacfafc3679.png)
 
-Dockerfile**重现一个容器**，Compose**重现容器的配置**和**集群**。
-
-### 编排和部署
+### Docker Compose做了什么？
 
 - 编排
 
@@ -21,13 +20,18 @@ Dockerfile**重现一个容器**，Compose**重现容器的配置**和**集群**
 
 按照编排所指定的内容和流程，在目标机器上执行编排指定环境初始化，存放指定的依赖和文件，运行指定的部署动作，最终按照编排中的规则来确认部署成功。
 
-所以：
+### 乐队和指挥家
 
-**编排是一个指挥家，他的大脑里存储了整个乐曲此起彼伏的演奏流程。**
+![乐队和指挥家](https://user-images.githubusercontent.com/7569085/40720556-bf061d58-6449-11e8-9a15-dc84597abb37.png)
 
-**部署就是整个乐队，他们严格按照指挥的意图用乐器来完成乐谱的执行。**
 
-在Compose的世界里，编排和部署的组合结果，就是一朵“容器云”。
+- **编排是一个指挥家，他的大脑里存储了整个乐曲此起彼伏的演奏流程。**
+
+- **部署就是整个乐队，他们严格按照指挥的意图用乐器来完成乐谱的执行。**
+
+### 编排和部署组合
+
+在Compose的世界里，编排和部署的组合结果，就是**一朵“容器云”**。
 
 
 ### 如何在Linux系统里安装docker-compose?
@@ -57,9 +61,9 @@ $ docker-compose --version
 
 - 编写你的应用的Dockerfile。
 - 在docker-compose.yml中定义你的应用所依赖的所有服务，这样它们可以在一个隔离的环境中运行.
-- 运行`docker-compose up`来启动和运行你的整个应用.
+- 运行`docker-compose build & docker-compose up`来启动和运行你的整个应用.
 
-### Wordpress应用实例
+### Docker Compose初体验（Wordpress应用实例）
 
 - 使用docker-compose
 
@@ -111,3 +115,4 @@ sudo docker run --name wordpress \
 			 wordpress:latest
 
 ```
+
