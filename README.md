@@ -4,11 +4,13 @@
 
 > docker-compose 是用来定义和运行多个Docker容器应用的工具。
 
+![docker和docker-compose](http://upload-images.jianshu.io/upload_images/1493507-8e1249c7e65b08fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ### 为什么要使用 Docker Compose?
 
 Dockerfile**重现一个容器**，Compose**重现容器的配置**和**集群**。使用docker-compose, 你只需要使用一个YAML文件去配置你应用的服务. 然后，运行一个命令，你就可以根据你的配置去创建并启动所有的service。
 
-![docker-compose up 启动所有服务](https://user-images.githubusercontent.com/7569085/40710864-61bbe42e-642c-11e8-985a-bdacfafc3679.png)
+![docker-compose up 启动所有服务](http://upload-images.jianshu.io/upload_images/1493507-8790a11209276554.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ### Docker Compose做了什么？
 
@@ -22,7 +24,8 @@ Dockerfile**重现一个容器**，Compose**重现容器的配置**和**集群**
 
 ### 乐队和指挥家
 
-![乐队和指挥家](https://user-images.githubusercontent.com/7569085/40720556-bf061d58-6449-11e8-9a15-dc84597abb37.png)
+![乐队和指挥家](http://upload-images.jianshu.io/upload_images/1493507-c6bb6a70eae83690.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 
 - **编排是一个指挥家，他的大脑里存储了整个乐曲此起彼伏的演奏流程。**
@@ -33,6 +36,9 @@ Dockerfile**重现一个容器**，Compose**重现容器的配置**和**集群**
 
 在Compose的世界里，编排和部署的组合结果，就是**一朵“容器云”**。
 
+### 仅仅使用Compose，能构建自己的容器云吗？
+
+答案是否定的。docker-compose**面向单主机部署**。docker-compose解决的问题局限在**“编排”**二字，甚至连**“部署”**范畴都涉足很少，而在一个能够服务于大众的云平台中，编排与部署也仅仅是其中的一个组成部分而已。
 
 ### 如何在Linux系统里安装docker-compose?
 
@@ -116,3 +122,8 @@ sudo docker run --name wordpress \
 
 ```
 
+从表面上看，好像使用docker cli手动操作也是可以接受的，不外乎多打几行命令，不妨想象一下，如果管理上百个容器的场景该如何应付。
+
+### Docker Compose进阶体验（HAProxy+Django+Redis应用实例）
+
+![HAProxy+Django+Redis应用架构图](https://user-images.githubusercontent.com/7569085/40724543-de71221e-6453-11e8-8502-5404136ab11c.png)
