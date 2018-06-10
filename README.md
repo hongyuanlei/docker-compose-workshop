@@ -129,61 +129,37 @@ sudo docker run --name wordpress \
 假设我们有一个nodeJS的应用，这个应用依赖redis，它的app/package.json如下：
 
 ```
-{
-  "name": "app",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "nodemon -L app/bin/www"
-  },
-  "dependencies": {
-    "express": "~4.9.0",
-    "body-parser": "~1.8.1",
-    "cookie-parser": "~1.3.3",
-    "morgan": "~1.3.0",
-    "serve-favicon": "~2.1.3",
-    "debug": "~2.0.0",
-    "hjs": "~0.0.6",
-    "redis": "~0.12.1",
-    "hiredis": "~0.1.17"
-  }
-}
+.
+├── README.md
+├── app
+│   ├── Dockerfile
+│   └── src
+│       └── redisweb
+│           ├── db.sqlite3
+│           ├── helloworld
+│           │   ├── __init__.py
+│           │   ├── admin.py
+│           │   ├── apps.py
+│           │   ├── migrations
+│           │   │   └── __init__.py
+│           │   ├── models.py
+│           │   ├── tests.py
+│           │   └── views.py
+│           ├── manage.py
+│           └── redisweb
+│               ├── __init__.py
+│               ├── settings.py
+│               ├── urls.py
+│               └── wsgi.py
+├── docker-compose.yml
+├── haproxy
+│   ├── Dockerfile
+│   └── haproxy.cfg
+└── redis
+    ├── master
+    │   ├── Dockerfile
+    │   └── redis.conf
+    └── slave
+        ├── Dockerfile
+        └── redis.conf
 ```
-
-Dockerfile如下：
-```
-FROM node:0.10.38
-
-RUN mkdir /src
-
-RUN npm install nodemon -g
-
-WORKDIR /src
-ADD app/package.json /src/package.json
-RUN npm install
-
-ADD app/nodemon.json /src/nodemon.json
-
-EXPOSE 3000
-
-CMD npm start
-```
-如何编写app/docker-compose.yml的内容？
-```
-version: '3.3'
-services:
-  web:
-    build: .
-    volumes:
-        - "./app:/src/app"
-    ports:
-        - "3030:3000"
-    depends_on:
-        - db
-  db:
-    image: redis
-```
-### Docker Compose进阶体验（HAProxy+Django+Redis应用实例）
-
-![HAProxy+Django+Redis应用架构图](http://upload-images.jianshu.io/upload_images/1493507-a473f3a6304ec722.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
