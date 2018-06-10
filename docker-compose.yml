@@ -1,0 +1,33 @@
+version: '3'
+services:
+  redis-master:
+    build:
+      context: redis/master/.
+  redis-slave1:
+    build:
+      context: redis/slave/.
+    depends_on:
+      - redis-master
+  redis-slave2:
+    build:
+      context: redis/slave/.
+    depends_on:
+      - redis-master
+  app1:
+    build:
+      context: app/.
+    depends_on:
+      - redis-master
+  app2:
+    build:
+      context: app/.
+    depends_on:
+      - redis-master
+  haproxy:
+    build:
+      context: haproxy/.
+    ports:
+      - 8001:8001
+    depends_on:
+      - app1
+      - app2
